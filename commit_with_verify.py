@@ -12,7 +12,7 @@ def validate_session_id(session_id):
     if re.match(pattern, session_id):
         return True, "验证通过"
     else:
-        return False, f"格式不正确"
+        return False, f"格式不正确。预期格式: .数字:十六进制_十六进制.十六进制.十六进制:Trae CN.T(YYYY/MM/DD HH:MM:SS)"
 
 def run_command(cmd):
     try:
@@ -51,7 +51,7 @@ def commit_with_validation(session_id):
     if not success:
         print(f"❌ git commit 失败: {stderr}")
         return False
-    print(f"✅ git commit 成功: {stdout.strip()}")
+    print(f"✅ git commit 成功")
     
     print("\n🚀 执行 git push origin main...")
     success, stdout, stderr = run_command("git push origin main")
